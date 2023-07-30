@@ -1,19 +1,15 @@
-import { createInterface } from 'readline';
+const n: null = null;
+const u: undefined = undefined;
 
-const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question('名前を入力してください:', (name) => {
-    console.log("こんにちは、 " + name + "さん");
-    rl.close();
-});
-// 名前を入力してください:uhyo
-// こんにちは、 uhyoさん
-
-console.log("foo" + true);
-// footrue
-console.log(null + "bar");
-// nullbar
-// 文字列として扱われる
+console.log(n === null);
+// true
+console.log(n === undefined);
+// false
+console.log(u === null);
+// false
+console.log(u === undefined);
+// true
+console.log(n == null);
+// true
+console.log(u == null);
+// true
