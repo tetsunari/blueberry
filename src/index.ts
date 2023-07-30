@@ -1,28 +1,31 @@
-const addResult = 1024 + 314 + 500;
-console.log(addResult);
-// 1838
-const discount = addResult * 0.7;
-console.log(discount);
-// 1286.6
+console.log(5 - 3 -1);
+// 1
+console.log((5 - 3) - 1);
+// 1
+console.log(5 - (3 - 1));
+// 3
 
-const spr2 = 2 ** 0.5;
-console.log(spr2);
-// 1.4142135623730951
-console.log(spr2 - 1);
-// 0.41421356237309515
+const x = 123;
+const minusx = -x;
+console.log(minusx);
+// -123
 
-console.log(18 / 12);
-// 1.5
-console.log(18n / 12n);
-// 1n
-console.log(18 % 12);
-// 6
-console.log(18n % 12n);
-// 6n
-const res1 = 5 - 1.86;
-console.log(res1);
-// 3.1399999999999997
+const str: string = "123";
+console.log(+str * 100);
+// 12300
 
-const res2 = 2n ** 5n;
-console.log(res2)
-// 32n
+let foo = 10;
+foo++;
+console.log(foo);
+// 11
+--foo;
+console.log(foo);
+// 10
+
+let bar = 10;
+console.log(++bar);
+// 11
+console.log(bar--);
+// 11
+console.log(bar);
+// 10
