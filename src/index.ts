@@ -1,9 +1,23 @@
-const greeting: string = "Hello, ";
-const target: string = "world!";
+let greeting: string = "Hello, ";
+let target: string = "world!";
 console.log(greeting + target);
 
+const greeting1 = "Hello, ";
+// コンパイルエラー
+greeting1 = greeting1 + "world!";
 
-const greeting1: string = "Hello, ";
-const target1: string = 123;
-// コンパイルエラーになる
-console.log(greeting1 + target1)
+let greeting2, target2;
+greeting2 = "Hello, ";
+target2 = "world!";
+console.log(greeting2 + target2);
+
+
+let greeting3: string, target3: string;
+greeting3 = "Hello, ";
+target3 = "world!";
+console.log(greeting3 + target3);
+
+let greeting4: string, target4: string;
+greeting4 = "Hello, ";
+// target4が定義されていないのでエラー
+console.log(greeting4 + target4);
