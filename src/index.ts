@@ -1,10 +1,18 @@
-const bignum: bigint = (123n + 456n) * 2n;
-console.log(bignum);
-// 1158n
+const str1: string = "Hello";
+const str2: string = 'world!';
+console.log(str1 + ", " + str2);
+// Hello, world!
 
-const result = 5n / 2n;
-console.log(result);
-// 2n
+const message: string = `Hello
+world!`;
+console.log(message);
+// Hello
+// world!
 
-const wrong = 100n + 50;
-// 50がbigintでないのでエラー
+const str3: string = "Hello";
+const str4: string = "world";
+console.log(`${str3}, ${str4}`);
+// Hello, world
+
+console.log(`123 + 456 = ${123 + 456}`);
+// 123 + 456 = 579
