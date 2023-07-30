@@ -1,31 +1,19 @@
-console.log(5 - 3 -1);
-// 1
-console.log((5 - 3) - 1);
-// 1
-console.log(5 - (3 - 1));
-// 3
+import { createInterface } from 'readline';
 
-const x = 123;
-const minusx = -x;
-console.log(minusx);
-// -123
+const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-const str: string = "123";
-console.log(+str * 100);
-// 12300
+rl.question('名前を入力してください:', (name) => {
+    console.log("こんにちは、 " + name + "さん");
+    rl.close();
+});
+// 名前を入力してください:uhyo
+// こんにちは、 uhyoさん
 
-let foo = 10;
-foo++;
-console.log(foo);
-// 11
---foo;
-console.log(foo);
-// 10
-
-let bar = 10;
-console.log(++bar);
-// 11
-console.log(bar--);
-// 11
-console.log(bar);
-// 10
+console.log("foo" + true);
+// footrue
+console.log(null + "bar");
+// nullbar
+// 文字列として扱われる
