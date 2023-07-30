@@ -1,60 +1,28 @@
-const num1 = Number(true);
-console.log(num1);
-// 1
+const addResult = 1024 + 314 + 500;
+console.log(addResult);
+// 1838
+const discount = addResult * 0.7;
+console.log(discount);
+// 1286.6
 
-const num2 = Number(false);
-console.log(num2);
-// 0
+const spr2 = 2 ** 0.5;
+console.log(spr2);
+// 1.4142135623730951
+console.log(spr2 - 1);
+// 0.41421356237309515
 
-const num3 = Number(null);
-console.log(num3);
-// 0
-
-const num4 = Number(undefined);
-console.log(num4);
-// NaN
-
-const bigint1 = BigInt("1234");
-console.log(bigint1);
-// 1234n
-
-const bigint2 = BigInt(500);
-console.log(bigint2);
-// 500n
-
-const bigint3 = BigInt(true);
-console.log(bigint3);
+console.log(18 / 12);
+// 1.5
+console.log(18n / 12n);
 // 1n
+console.log(18 % 12);
+// 6
+console.log(18n % 12n);
+// 6n
+const res1 = 5 - 1.86;
+console.log(res1);
+// 3.1399999999999997
 
-// const bigint = BigInt("foobar");
-// ランタイムエラー
-
-const str1 = String(1234.5);
-console.log(str1);
-// "1234.5"
-
-const str2 = String(true);
-console.log(str2);
-// "true"
-
-const str3 = String(null);
-const str4 = String(undefined);
-console.log(str3, str4);
-// "null undefined"
-
-console.log(Boolean(123));
-// true
-console.log(Boolean(0));
-// false
-console.log(Boolean(1n));
-// true
-console.log(Boolean(0n));
-// false
-console.log(Boolean(""));
-// false
-console.log(Boolean("foobar"));
-// true
-console.log(Boolean(null));
-// false
-console.log(Boolean(undefined));
-// false
+const res2 = 2n ** 5n;
+console.log(res2)
+// 32n
