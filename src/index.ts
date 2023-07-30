@@ -1,5 +1,9 @@
-console.log("Hello \\word!/");
-// Hello \word!/
+const no: boolean = false;
+const yes: boolean = true;
+console.log(yes, no);
+// true false
 
-console.log("Hello \u{796d} world!");
-// Hello 祭 world!
+const n: null = null;
+const u: undefined = undefined;
+console.log(n, u);
+// null undefined
