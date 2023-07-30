@@ -5,3 +5,6 @@ console.log(bignum);
 const result = 5n / 2n;
 console.log(result);
 // 2n
+
+const wrong = 100n + 50;
+// 50がbigintでないのでエラー
