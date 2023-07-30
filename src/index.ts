@@ -1,5 +1,8 @@
-const width1 = 5;
-const width2 = 8;
-const height: number = 3;
-const area = (width1 + width2) * height / 2;
-console.log(area);
+const big = 1e8;
+const small = 4e-5;
+console.log(big, small);
+// 100000000 0.00004
+
+const million = 1_000_000;
+console.log(million);
+// 1000000
