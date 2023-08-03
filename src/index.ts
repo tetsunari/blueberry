@@ -1,15 +1,20 @@
+let log: string = '';
 for (let i: number = 1; i <= 100; i++) {
+    if (i > 1) {
+        log += ' ';
+    }
     if (i % 3 === 0) {
         if (i % 5 === 0) {
-            console.log('FizzBuzz');
+            log += 'FizzBuzz';
         } else {
-            console.log('Fizz');
+            log += 'Fizz';
         }
     } else {
         if (i % 5 === 0) {
-            console.log('Buzz');
+            log += 'Buzz';
         } else {
-            console.log(i);
+            log += String(i);
         }
     }
+    console.log(log);
 }
