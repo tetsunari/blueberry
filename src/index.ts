@@ -1,24 +1,20 @@
 const obj = {
-    foo: 555,
-    bar: '文字列',
+    "foo": 123,
+    "foo bar": -500,
+    "↑↓↑↓": ""
 };
+console.log(obj.foo); // 123
+console.log(obj["foo bar"]); // -500
 
-console.log(obj.foo);
-console.log(obj.bar);
+const obj1 = {
+    1: "one",
+    2.05: "two point o five",
+};
+console.log(obj1["1"]); // one
+console.log(obj1["2.05"]); // two point o five
 
-const user = {
-    name: input ? input : '名無し',
-    age: 20,
-}
-
-const name1 = input ? input : '名無し';
-const user1 = {
-    name: name1,
-    age: 20,
-}
-
-const name = input ? input : '名無し';
-const user2 = {
-    name,
-    age: 20,
-}
+const propName = "foo";
+const obj2 = {
+    [propName]: 123
+};
+console.log(obj2.foo); // 123
