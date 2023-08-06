@@ -1,7 +1,17 @@
-const user = {
-    name: "uhyo",
-    age: 25,
-};
+import {createInterface} from 'readline';
 
-user.age = 26;
-console.log(user.age); // 26
+const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const messages = {
+    good: '0以上の数値が入力されました！',
+    bad: '負の数値を入力しないでください！'
+}
+
+rl.question('数値を入力してください：', (line) => {
+    const num = Number(line);
+    console.log(messages[num >= 0 ? "good" : "bad"]);
+    rl.close();
+});
