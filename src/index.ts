@@ -1,13 +1,26 @@
-const obj : {
-    foo: number;
-    bar: string;
+const obj: {
+    foo: number,
+    bar: string,
 } = {
     foo: 123,
-    bar: "hello world!",
-}
+    bar: true,
+};
 
-const obj1 : {
-    "foo bar": number;
+const obj1: {
+    foo: number,
+    bar: string,
 } = {
-    "foo bar": 123,
-}
+    foo: 123,
+};
+
+const obj2 = {
+    foo: 123,
+    bar: "Hello, world",
+};
+obj2.foo = null;
+
+const ojb3 = {
+    foo: 123,
+    bar: "Hello, world",
+};
+console.log(ojb3.hoge);
