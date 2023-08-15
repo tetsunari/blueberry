@@ -1,26 +1,24 @@
-const obj: {
-    foo: number,
-    bar: string,
-} = {
-    foo: 123,
-    bar: true,
+type FooBarObj = {
+    foo: number;
+    bar: string;
 };
-
-const obj1: {
-    foo: number,
-    bar: string,
-} = {
-    foo: 123,
-};
-
-const obj2 = {
+const obj: FooBarObj = {
     foo: 123,
     bar: "Hello, world",
 };
-obj2.foo = null;
 
-const ojb3 = {
+const obj1: FooBarObj1 = {
     foo: 123,
     bar: "Hello, world",
 };
-console.log(ojb3.hoge);
+type FooBarObj1 = {
+    foo: number;
+    bar: string;
+};
+
+type UserId = string;
+const id: UserId = "uhyo";
+
+type FooBar = { foo: number };
+type MyObj = FooBar;
+const obj2: MyObj = { foo: 0 };
