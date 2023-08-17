@@ -1,13 +1,5 @@
 type MyObj = {
-    foo: boolean;
-    bar: boolean;
-    baz?: number;
+    readonly foo: number;
 }
-const obj: MyObj = { foo: false, bar: true };
-const obj1: MyObj = { foo: true, bar: false, baz: 1234 };
-console.log(obj.baz); // undefined
-console.log(obj1.baz); // 1234
-// console.log(obj1.baz * 1000); // error
-if (obj1.baz !== undefined) {
-    console.log(obj1.baz * 1000); // 1234000
-}
+const obj: MyObj = { foo: 123 };
+// obj.foo = 0; // error
