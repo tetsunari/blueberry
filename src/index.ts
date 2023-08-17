@@ -1,21 +1,13 @@
-type PriceData = {
-    [key: string]: number;
+type MyObj = {
+    foo: boolean;
+    bar: boolean;
+    baz?: number;
 }
-const data: PriceData = {
-    apple: 220,
-    coffee: 120,
-    bento: 500,
-};
-data.chicken = 250;
-// data.弁当 = "foo"; // error
-
-type MyObj = { [key: string]: number };
-const obj: MyObj = { foo: 123 };
-const num: number = obj.bar;
-console.log(num); // undefined
-
-const propName: string = "foo";
-const obj1 = {
-    [propName]: 123
-};
-console.log(obj1.foo); // 123
+const obj: MyObj = { foo: false, bar: true };
+const obj1: MyObj = { foo: true, bar: false, baz: 1234 };
+console.log(obj.baz); // undefined
+console.log(obj1.baz); // 1234
+// console.log(obj1.baz * 1000); // error
+if (obj1.baz !== undefined) {
+    console.log(obj1.baz * 1000); // 1234000
+}
