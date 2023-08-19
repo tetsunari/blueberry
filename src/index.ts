@@ -1,5 +1,4 @@
-type MyObj = {
-    readonly foo: number;
-}
-const obj: MyObj = { foo: 123 };
-// obj.foo = 0; // error
+const num: number = 0;
+type T = typeof num;
+const foo: T = 123;
+
