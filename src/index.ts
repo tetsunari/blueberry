@@ -1,15 +1,20 @@
-type FooBar = {
-    foo: string;
-    bar: number;
-}
-type FooBarBaz = {
-    foo: string;
-    bar: number;
-    baz: boolean;
-}
-const obj: FooBarBaz = {
-    foo: "hi",
-    bar: 1,
-    baz: false,
+type Animal = {
+    age: number;
 };
-const obj2: FooBar = obj;
+type Human = {
+    age: number;
+    name: string;
+};
+
+type AnimalFamily = {
+    familyName: string;
+    mother: Animal;
+    father: Animal;
+    child: Animal;
+};
+type HumanFamily = {
+    familyName: string;
+    mother: Human;
+    father: Human;
+    child: Human;
+};
