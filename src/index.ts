@@ -1,20 +1,7 @@
-type Animal = {
-    age: number;
+type User = { name: string; age: number };
+const obj = {
+    name: "Uhyo",
+    age: 26,
+    telNumber: "12345"
 };
-type Human = {
-    age: number;
-    name: string;
-};
-
-type AnimalFamily = {
-    familyName: string;
-    mother: Animal;
-    father: Animal;
-    child: Animal;
-};
-type HumanFamily = {
-    familyName: string;
-    mother: Human;
-    father: Human;
-    child: Human;
-};
+const u: User = obj;
