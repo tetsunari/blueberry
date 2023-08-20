@@ -1,7 +1,9 @@
-type User = { name: string; age: number };
-const obj = {
-    name: "Uhyo",
-    age: 26,
-    telNumber: "12345"
+type User<T> = {
+    name: string;
+    child: T;
 };
-const u: User = obj;
+type Family <Parent, Child> = {
+    mother: Parent;
+    father: Parent;
+    child: Child;
+};
