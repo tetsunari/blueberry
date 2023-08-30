@@ -1,14 +1,10 @@
-const { foo, bar } = obj;
-const {
-    foo,
-    bar: barVar,
-    "foo bar": foobar
-} = obj1;
-
-const obj2 = {
-    str: "hello, world",
-    num: 1234
+const nested = {
+    num: 123,
+    obj: {
+        foo: "hello",
+        bar: "world",
+    }
 };
-const {
-    foo
-} = obj2; // error
+const { num, obj: { foo } } = nested;
+console.log(num); // 123
+console.log(foo); // "hello"
