@@ -1,15 +1,16 @@
-const obj = {
-    foo: 123,
-    bar: "string",
-    baz: false,
-};
-const { foo, ...restObj } = obj;
-console.log(foo); // 123
-console.log(restObj); // { bar: 'string', baz: false }
+const d = new Date();
+console.log(d);
+console.log(d.getMonth());
+console.log(d.getFullYear());
 
-const arr = [1, 2, 3, 5, 8, 13];
-const [first, second, third, ...rest] = arr;
-console.log(first); // 1
-console.log(second); // 2
-console.log(third); // 3
-console.log(rest); // [5, 8, 13]
+const d1 = new Date("2020-03-03T15:00:00+09:00");
+console.log(d1);
+
+const date = new Date("2020-03-03T15:00:00+09:00");
+const timeNum = date.getTime();
+console.log(timeNum);
+
+const date2 = new Date(timeNum);
+console.log(date2);
+
+console.log(Date.now());
