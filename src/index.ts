@@ -1,16 +1,9 @@
-const d = new Date();
-console.log(d);
-console.log(d.getMonth());
-console.log(d.getFullYear());
+const r = /ab+c/;
+console.log(r.test("abbbbbc")); // true
+console.log(r.test("Hello, abc world!")); // true
+console.log(r.test("ABC")); // false
+console.log(r.test("こんにちは")); // false
 
-const d1 = new Date("2020-03-03T15:00:00+09:00");
-console.log(d1);
-
-const date = new Date("2020-03-03T15:00:00+09:00");
-const timeNum = date.getTime();
-console.log(timeNum);
-
-const date2 = new Date(timeNum);
-console.log(date2);
-
-console.log(Date.now());
+const r1 = /^abc/;
+console.log(r1.test("abcdefg"));; // true
+console.log(r1.test("Hello, abcdefg")); // false
