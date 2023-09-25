@@ -1,18 +1,14 @@
-function helloWorldTimes(n: number): void {
-    for (let i = 0; i < n; i++) {
-        console.log("Hello, world!");
-    }
-}
-helloWorldTimes(5);
+type Human = {
+    height: number;
+    weight: number;
+};
+const calcBMI = function(human: Human): number {
+    return human.weight / human.height ** 2;
+};
+const uhyo: Human = { height: 1.84, weight: 72};
+console.log(calcBMI(uhyo)); // 21.266540642722116
 
-function helloWorldTimes2(n: number): void {
-    if (n >= 100) {
-        console.log(`${n}回なんて無理です！`);
-        return;
-    }
-    for (let i = 0; i < n; i++) {
-        console.log("Hello world!");
-    }
+const calcBMI2 = function({ height, weight }: Human): number {
+    return weight / height ** 2;
 }
-helloWorldTimes2(2);
-helloWorldTimes2(150);
+console.log(calcBMI2(uhyo)); // 21.266540642722116
