@@ -1,8 +1,18 @@
-function range(min: number, max: number): number[] {
-    const result = [];
-    for (let i = min; i <= max; i++) {
-        result.push(i);
+function helloWorldTimes(n: number): void {
+    for (let i = 0; i < n; i++) {
+        console.log("Hello, world!");
     }
-    return result;
 }
-console.log(range(5, 10)); // [ 5, 6, 7, 8, 9, 10 ]
+helloWorldTimes(5);
+
+function helloWorldTimes2(n: number): void {
+    if (n >= 100) {
+        console.log(`${n}回なんて無理です！`);
+        return;
+    }
+    for (let i = 0; i < n; i++) {
+        console.log("Hello world!");
+    }
+}
+helloWorldTimes2(2);
+helloWorldTimes2(150);
