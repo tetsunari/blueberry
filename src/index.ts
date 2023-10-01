@@ -1,8 +1,10 @@
-const obj = {
-    double(num: number): number {
-        return num * 2;
-    },
-    double2: (num: number): number => num * 2,
+const sum = (...args: number[]): number => {
+    let result = 0;
+    for (const num of args) {
+        result += num;
+    }
+    return result;
 };
-console.log(obj.double(100)); // 200
-console.log(obj.double2(-50)); // -100
+console.log(sum(1, 10, 100)); // 111
+console.log(sum(123, 456)); // 579
+console.log(sum()); // 0
