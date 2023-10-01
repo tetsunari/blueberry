@@ -1,4 +1,4 @@
-const toLowerOrUpper = (str: string, upper?: boolean): string => {
+const toLowerOrUpper = (str: string, upper: boolean = false): string => {
     if (upper) {
         return str.toUpperCase();
     } else {
