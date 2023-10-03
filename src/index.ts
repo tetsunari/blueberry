@@ -1,3 +1,10 @@
-const nums = [1,2,3,4,5,6,7,8,9];
-const arr2 = nums.filter((x) => x % 3 === 0);
-console.log(arr2);
+type MyFun = {
+    isUsed?: boolean;
+    (arg: number): void
+};
+const double: MyFun = (arg: number) => {
+    console.log(arg * 2);
+}
+double.isUsed = true;
+console.log(double.isUsed);
+double(1000);
