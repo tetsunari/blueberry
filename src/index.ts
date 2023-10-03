@@ -5,9 +5,11 @@ type HasNameAndAge = {
     name: string;
     age: number;
 };
-const fromAge = (age: number): HasNameAndAge => ({
-    name: "John Smith",
-    age,
+const showName = (obj: HasName) => {
+    console.log(obj.name);
+};
+const g: (obj: HasNameAndAge) => void = showName;
+g({
+    name: "TEST",
+    age: 16,
 });
-const f: (age: number) => HasName = fromAge;
-const obj: HasName = f(100);
