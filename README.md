@@ -10,3 +10,6 @@ userをnodeにしてみる
 
 root ユーザーでログインする場合がある（`npm init --yes` など）
 - docker compose exec -u root  buleberry_ts bash
+- docker compose exec buleberry_ts bash
+- npx tsc
+- node src/index.ts
