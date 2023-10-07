@@ -1,15 +1,6 @@
-type HasName = {
-    name: string;
-};
-type HasNameAndAge = {
-    name: string;
-    age: number;
-};
-const showName = (obj: HasName) => {
-    console.log(obj.name);
-};
-const g: (obj: HasNameAndAge) => void = showName;
-g({
-    name: "TEST",
-    age: 16,
-});
+type UnaryFunc = (age: number) => number;
+type BinaryFunc = (left: number, right: number) => number;
+const double: UnaryFunc = age => age * 2;
+const add: BinaryFunc = (left, right) => left + right;
+const bin: BinaryFunc = double;
+console.log(bin(10, 100));
