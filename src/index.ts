@@ -16,3 +16,5 @@ console.log(repeat<HasNameAndAge>({
     name: "uhyo",
     age: 26,
 }, 3))
+
+// console.log(repeat<string>("a", 5)); // error
