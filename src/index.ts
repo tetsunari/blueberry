@@ -1,11 +1,17 @@
-function sabayomi(age: number) {
-    if (age >= 30) {
-        const lie = age - 10;
-        return lie;
+for (let i = 0; i < 100; i++) {
+    const message = getFizzBuzzString(i);
+    console.log(message);
+}
+
+function getFizzBuzzString(i: number): string|number
+{
+    if (i % 3 === 0) {
+        if (i % 5 === 0) {
+            return "FizzBuzz";
+        }
+        return "Fizz";
+    } else if (i % 5 === 0) {
+        return "Buzz";
     }
-    if (age >= 20) {
-        const lie = age - 5;
-        return lie;
-    }
-    return age;
+    return i;
 }
