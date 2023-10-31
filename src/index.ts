@@ -1,18 +1,11 @@
-const repeat = function<T>(element: T, length: number): T[] {
+const repeatLength = 5;
+const repeat = function<T>(element: T): T[] {
+    const repeatLength = 3;
     const result: T[] = [];
-    for(let i = 0; i < length; i++) {
+    for (let i = 0; i < repeatLength; i++) {
         result.push(element);
     }
     return result;
 }
-console.log(repeat(1, 5));
-
-type Func = <T>(arg: T, num: number) => T[];
-const repeat1: Func = (element, length) => {
-    const result = [];
-    for(let i = 0; i < length; i++) {
-        result.push(element);
-    }
-    return result;
-}
-console.log(repeat1("test", 5));
+console.log(repeat("a")); // [ 'a', 'a', 'a' ]
+console.log(repeatLength); // 5
