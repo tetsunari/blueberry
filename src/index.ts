@@ -1,9 +1,16 @@
 class User {
-    name: string = "";
+    name?: string;
     age: number = 0;
 }
-const Uhyo = new User();
-console.log(Uhyo.name);
-console.log(Uhyo.age);
-Uhyo.age = 23;
-console.log(Uhyo.age);
+const uhyo = new User();
+console.log(uhyo.name); // undefined
+uhyo.name = "ウヒョ";
+console.log(uhyo.name); // ウヒョ
+
+
+class User1 {
+    readonly name: string = '';
+    age: number = 0;
+}
+const test = new User1();
+test.name = "test"; // error
