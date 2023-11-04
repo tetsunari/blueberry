@@ -1,4 +1,9 @@
 class User {
+    static adminName: string = 'uhyo';
+    static getAdminUser() {
+        return new User(User.adminName, 24);
+    }
+
     name: string;
     age: number;
 
@@ -11,23 +16,9 @@ class User {
         return this.age >= 20;
     }
 }
-const uhyo = new User("uhyo", 26);
+console.log(User.adminName);
+const admin = User.getAdminUser();
+console.log(admin.name);
+console.log(admin.isAdult());
+const uhyo = new User("test", 26);
 console.log(uhyo.name);
-console.log(uhyo.isAdult());
-
-
-class readUser {
-    name: string;
-    readonly age: number;
-
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
-
-    setAge(newAge: number) {
-        this.age = newAge; // error
-    }
-}
-const readUhyo = new readUser("read", 26);
-readUhyo.age = 27; // error
