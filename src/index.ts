@@ -1,26 +1,23 @@
-for (const i of sequence(1, 100)) {
-    const message = getFizzBuzzString(i);
-    console.log(message);
-}
-
-function getFizzBuzzString(i: number): string|number
-{
-    if (i % 3 === 0) {
-        if (i % 5 === 0) {
-            return "FizzBuzz";
-        }
-        return "Fizz";
-    } else if (i % 5 === 0) {
-        return "Buzz";
+function map(array: number[], callback: (value: number) => number): number[] {
+    const result: number[] = [];
+    for (const elm of array) {
+        result.push(callback(elm));
     }
-    return i;
+    return result;
 }
+const data = [1,1,2,3,5,8,13];
+const result = map(data, (x) => x * 10);
+console.log(result);
 
-function sequence(first: number, last: number): number[]
-{
-    const return_list: number[] = [];
-    for (first; first <= last; first++) {
-        return_list.push(first);
+function map1<T, U>(array: T[], callback: (value: T) => U): U[] {
+    const result: U[] = [];
+    for(const elm of array) {
+        result.push(callback(elm));
     }
-    return return_list;
+    return result;
 }
+const data1 = [-1, 0, 2, -2, 8];
+const result1: boolean[] = map1(data1, (x) => x >= 0);
+const result2 = map(data, (x) => x * 10);
+console.log(result1);
+console.log(result2);
