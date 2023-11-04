@@ -1,16 +1,19 @@
 class User {
-    name?: string;
+    name: string = '';
     age: number = 0;
+
+    isAdult(): boolean {
+        return this.age >= 20;
+    }
+
+    setAge(newAge: number) {
+        this.age = newAge;
+    }
 }
 const uhyo = new User();
-console.log(uhyo.name); // undefined
-uhyo.name = "ウヒョ";
-console.log(uhyo.name); // ウヒョ
-
-
-class User1 {
-    readonly name: string = '';
-    age: number = 0;
-}
-const test = new User1();
-test.name = "test"; // error
+console.log(uhyo.isAdult()); // false
+uhyo.setAge(25);
+console.log(uhyo.isAdult()); // true
+const test = new User();
+test.age = 30;
+console.log(test.isAdult()); // true
