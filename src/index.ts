@@ -1,19 +1,26 @@
 class User {
-    name: string;
-    #age: number;
+    static adminUser: User;
+    static {
+        this.adminUser = new User;
+        this.adminUser.#age = 999;
+    }
 
-    constructor(name: string, age: number) {
-        this.name = name;
+    #age: number = 0;
+    getAge() {
+        return this.#age;
+    }
+
+    setAge(age: number) {
+        if (age < 0 || age > 150) {
+            return;
+        }
         this.#age = age;
     }
-
-    public isAdult(): boolean {
-        return this.#age >= 20;
-    }
 }
-
-const uhyo = new User("uhyo", 26);
-console.log(uhyo.name);
-console.log(uhyo.isAdult());
-console.log(uhyo.#age); // error
-// privateはtypescript独自機能、#はjavascript由来
+console.log(User.adminUser.getAge()); // 999
+const test = new User();
+console.log(test.getAge()); // 0
+test.setAge(100);
+console.log(test.getAge()); // 100
+test.setAge(1000);
+console.log(test.getAge()); // 100
