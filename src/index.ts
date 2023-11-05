@@ -14,12 +14,13 @@ class User {
 class PremiumUser extends User {
     rank: number = 1;
 
-    // 親クラスのUserを継承しているので、booleanを返す必要がある
-    public isAdult(): boolean {
-        return true;
+    constructor(name: string, age: number, rank: number) {
+        // superはthis.の前に置く必要がある
+        super(name, age);
+        this.rank = rank;
     }
 }
-const john = new User("john", 15);
-const test = new PremiumUser("test", 15);
-console.log(john.isAdult()); // false
-console.log(test.isAdult()); // true
+const test = new PremiumUser("test", 15, 3);
+console.log(test.name);
+console.log(test.rank);
+console.log(test.isAdult());
