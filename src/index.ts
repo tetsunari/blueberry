@@ -13,16 +13,13 @@ class User {
 }
 class PremiumUser extends User {
     rank: number = 1;
-}
-const uhyo = new PremiumUser("uhyo", 26);
-console.log(uhyo.rank); // 1
-console.log(uhyo.name); // uhyo
-console.log(uhyo.isAdult()); // true
 
-function getMessage(u: User) {
-    return `こんにちは、${u.name}さん`;
+    // 親クラスのUserを継承しているので、booleanを返す必要がある
+    public isAdult(): boolean {
+        return true;
+    }
 }
 const john = new User("john", 15);
-const test = new PremiumUser("test", 26);
-console.log(getMessage(john)); // こんにちは、johnさん
-console.log(getMessage(test)); // こんにちは、testさん
+const test = new PremiumUser("test", 15);
+console.log(john.isAdult()); // false
+console.log(test.isAdult()); // true
