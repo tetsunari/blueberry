@@ -1,21 +1,25 @@
-class User {
-    name: string;
-    #age: number;
+class A {
+    foo = 123;
+    bar = this.foo + 100;
+}
+const obj = new A();
+console.log(obj.bar); // 223
 
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.#age = age;
-    }
-
-    public isAdult() {
-        return this.#age >= 20;
+class B {
+    foo = 123;
+    bar = this.foo + 100;
+    getFoo() {
+        return this.foo;
     }
 }
-const uhyo = new User('uhyo', 25);
-const john = new User('John', 17);
-console.log(uhyo.isAdult()); // true
-console.log(uhyo.isAdult.apply(john, [])); // false
+const obj2 = new B();
+console.log(obj2.bar, obj2.getFoo()); // 223 123
 
-const boundIsAdult = uhyo.isAdult.bind(uhyo);
-console.log(boundIsAdult()); // true
-console.log(boundIsAdult.call(john)); // true
+class C {
+    static foo = 123;
+    static bar = this.foo + 100;
+    static {
+        console.log(this.foo); // 123
+        console.log(this.bar); // 223
+    }
+}
