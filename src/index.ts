@@ -1,25 +1,69 @@
-class A {
-    foo = 123;
-    bar = this.foo + 100;
+try {
+    console.log("try brock");
+} catch (error) {
+    console.log("catch brock");
+} finally {
+    console.log("finally brock");
 }
-const obj = new A();
-console.log(obj.bar); // 223
+/**
+ * try brock
+ * finally brock
+ */
 
-class B {
-    foo = 123;
-    bar = this.foo + 100;
-    getFoo() {
-        return this.foo;
+try {
+    console.log("try brock");
+} finally {
+    console.log("finally brock");
+}
+/**
+ * try brock
+ * finally brock
+ */
+
+try {
+    console.log("try brock");
+    throwError();
+} catch (error) {
+    console.log("catch brock");
+} finally {
+    console.log("finally brock");
+}
+/**
+ * try brock
+ * catch brock
+ * finally brock
+ */
+
+try {
+    console.log("error start");
+    // throwError();
+    console.log("error end");
+} finally {
+    console.log("finally brock");
+}
+console.log("end");
+/**
+ * error start
+ * finally brock
+ */
+
+function throwError() {
+    throw new Error("error");
+}
+
+console.log(sum(100));
+function sum(max: number): number {
+    try {
+        let result = 0;
+        for (let i = 1; i <= max; i++) {
+            result += i;
+        }
+        return result;
+    } finally {
+        console.log("finally brock");
     }
 }
-const obj2 = new B();
-console.log(obj2.bar, obj2.getFoo()); // 223 123
-
-class C {
-    static foo = 123;
-    static bar = this.foo + 100;
-    static {
-        console.log(this.foo); // 123
-        console.log(this.bar); // 223
-    }
-}
+/**
+ * finally brock
+ * 5050
+ */
