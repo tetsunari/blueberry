@@ -1,69 +1,27 @@
-try {
-    console.log("try brock");
-} catch (error) {
-    console.log("catch brock");
-} finally {
-    console.log("finally brock");
-}
-/**
- * try brock
- * finally brock
- */
+class EmptyArrayError extends Error {}
 
 try {
-    console.log("try brock");
-} finally {
-    console.log("finally brock");
-}
-/**
- * try brock
- * finally brock
- */
-
-try {
-    console.log("try brock");
-    throwError();
-} catch (error) {
-    console.log("catch brock");
-} finally {
-    console.log("finally brock");
-}
-/**
- * try brock
- * catch brock
- * finally brock
- */
-
-try {
-    console.log("error start");
-    // throwError();
-    console.log("error end");
-} finally {
-    console.log("finally brock");
-}
-console.log("end");
-/**
- * error start
- * finally brock
- */
-
-function throwError() {
-    throw new Error("error");
-}
-
-console.log(sum(100));
-function sum(max: number): number {
-    try {
-        let result = 0;
-        for (let i = 1; i <= max; i++) {
-            result += i;
-        }
-        return result;
-    } finally {
-        console.log("finally brock");
+    getAverage([1, 2, 3]);
+    getAverage([]);
+} catch (e) {
+    if (e instanceof EmptyArrayError) {
+        console.log('EmptyArrayError');
+    } else {
+        throw e;
     }
 }
-/**
- * finally brock
- * 5050
- */
+
+function getAverage(nums: number[]) {
+    if (nums.length === 0) {
+        throw new EmptyArrayError('Empty array');
+    }
+    return sum(nums) / nums.length;
+}
+
+function sum(nums: number[]): number {
+    let sum = 0;
+    for (const num of nums) {
+        sum += num;
+    }
+    return sum;
+}
