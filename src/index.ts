@@ -1,27 +1,27 @@
-class EmptyArrayError extends Error {}
+class User {
+    readonly name: string
+    readonly age: number
 
-try {
-    getAverage([1, 2, 3]);
-    getAverage([]);
-} catch (e) {
-    if (e instanceof EmptyArrayError) {
-        console.log('EmptyArrayError');
-    } else {
-        throw e;
+    constructor(name: string, age: number) {
+        if (name === '') {
+            throw new Error('名前を空にはできません！')
+        }
+        this.name = name
+        this.age = age
+    }
+
+    getMessage(message: string): string {
+        return `${this.name} (${this.age}) 「${message}」`
     }
 }
 
-function getAverage(nums: number[]) {
-    if (nums.length === 0) {
-        throw new EmptyArrayError('Empty array');
-    }
-    return sum(nums) / nums.length;
-}
+const uhyo = new User('uhyo', 30);
+console.log(uhyo.getMessage('こんにちは！'));
 
-function sum(nums: number[]): number {
-    let sum = 0;
-    for (const num of nums) {
-        sum += num;
+function createUser(name: string, age: number) {
+    return (message: string) => {
+        return `${name} (${age}) 「${message}」`
     }
-    return sum;
 }
+const getMessage = createUser('uhyo', 30);
+console.log(getMessage('こんにちは！'));
