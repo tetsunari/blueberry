@@ -1,31 +1,16 @@
 type Animal = {
     species: string;
-    age: string;
-};
-type Human = {
-    name: string;
     age: number;
 };
-type User = Animal | Human;
-
-const tama: User = {
-    species: 'Felis silverstris catus',
-    age: '永遠の17歳',
+type Human = Animal & {
+    name: string;
 };
-const uhyo: User = {
-    name: 'uhyo',
+const tama: Animal = {
+    species: "Felis silvestris catus",
+    age: 3
+};
+const uhyo: Human = {
+    species: "Homo sapiens sapiens",
     age: 26,
+    name: "uhyo",
 };
-
-function showAge(user: User) {
-    const age = user.age;
-    console.log(age);
-}
-
-type MysteryFun =
-    | ((str: string) => string)
-    | ((str: string) => number);
-function userFunc(func: MysteryFun) {
-    const result = func('test');
-    console.log(result);
-}
