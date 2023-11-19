@@ -1,15 +1,15 @@
-type Human = { name: string; };
-type Animal = { species: string };
-function getName(human: Human) {
-    return human.name;
-}
-function getSpecies(animal: Animal) {
-    return animal.species;
-}
-const mysteryFunc = Math.random() < 0.5 ? getName : getSpecies;
-const uhyo: Human & Animal = {
-    name: "uhyo",
-    species: "Homo sapiens sapiens",
+type Human = {
+    name: string;
+    age?: number;
 };
-const value = mysteryFunc(uhyo);
-console.log(value);
+const uhyo: Human = {
+    name: "uhyo",
+    age: 25,
+};
+const john: Human = {
+    name: "john",
+};
+const unde: Human = {
+    name: "unde",
+    age: undefined,
+};
