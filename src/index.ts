@@ -1,29 +1,13 @@
-type Human = {
-    name: string;
-    age: number;
-};
-function useMaybeHuman(human: Human | null) {
-    const age = human?.age;
-    console.log(age);
-    // age is number | undefined
-}
+type FooString = "foo";
+const foo: FooString = "foo";
+const bar: FooString = "bar"; // Error: Type '"bar"' is not assignable to type '"foo"'.
 
-type GetTimeFunc = () => Date;
-function useTime(getTimeFunc: GetTimeFunc | undefined) {
-    const timeOrUndefined = getTimeFunc?.();
-    // timeOrUndefined is Date | undefined
-}
+const foo2: "foo2" = "foo2";
+const one: 1 = 1;
+const t: true = true;
+const three: 3n = 3n;
 
-type User = {
-    isAdult(): boolean;
-}
-function checkForAdultUser(user: User | null) {
-    if (user?.isAdult()) {
-        showSpecilContents(user);
-    }
-}
-
-type GetTimeFunc2 = () => Date;
-function useTime2(getTimeFunc: GetTimeFunc2 | undefined) {
-    const time = getTimeFunc?.().toString();
-}
+const uhyoName = "uhyo";
+// uhyoNameは"uhyo"という文字列リテラル型になる
+const age = 30;
+// ageは30という数値リテラル型になる
