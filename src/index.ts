@@ -1,41 +1,35 @@
 type Animal = {
-    tag: "animal",
-    species: string,
+    tag: "animal";
+    species: string;
 }
 type Human = {
-    tag: "human",
-    name: string,
+    tag: "human";
+    name: string;
 }
-type User = Animal | Human;
-
-const tama: User = {
-    tag: "animal",
-    species: "Felis silvestris catus",
-};
-const uhyo: User = {
-    tag: "human",
-    name: "uhyo",
-};
-// const alien: User = {
-//     // error: Property 'species' is missing in type '{ tag: "animal"; name: string; }' but required in type 'Animal'.
-//     tag: "animal",
-//     name: "gray",
-// };
+type User = Animal|Human;
 
 function getUserName(user: User): string {
-    if (user.tag === "human") {
-        return user.name;
-    } else {
-        return "名無し";
+    switch (user.tag) {
+        case "human":
+            return user.name;
+        case "animal":
+            return "名無し";
     }
 }
-const tama: User = {
-    tag: "animal",
-    species: "Felis silvestris catus",
-};
-const uhyo: User = {
-    tag: "human",
-    name: "uhyo",
-};
-console.log(getUserName(tama)); // 名無し
-console.log(getUserName(uhyo)); // uhyo
+
+type Robot = {
+    tag: "robot",
+    name: string;
+}
+type User2 = Animal|Human|Robot;
+
+function getUserName2(user: User2): string {
+    switch (user.tag) {
+        case "human":
+            return user.name;
+        case "animal":
+            return "名無し";
+        case "robot":
+            return user.name;
+    }
+}
