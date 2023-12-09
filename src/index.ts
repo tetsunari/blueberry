@@ -1,14 +1,41 @@
-console.log(typeof "uhyo"); // string
-console.log(typeof 42); // number
-console.log(typeof {}); // object
-console.log(typeof undefined); // undefined
+type Animal = {
+    tag: "animal",
+    species: string,
+}
+type Human = {
+    tag: "human",
+    name: string,
+}
+type User = Animal | Human;
 
-function formatNumberOrString(value: string|number) {
-    if (typeof value === "number") {
-        return value.toFixed(3);
+const tama: User = {
+    tag: "animal",
+    species: "Felis silvestris catus",
+};
+const uhyo: User = {
+    tag: "human",
+    name: "uhyo",
+};
+// const alien: User = {
+//     // error: Property 'species' is missing in type '{ tag: "animal"; name: string; }' but required in type 'Animal'.
+//     tag: "animal",
+//     name: "gray",
+// };
+
+function getUserName(user: User): string {
+    if (user.tag === "human") {
+        return user.name;
     } else {
-        return value;
+        return "名無し";
     }
 }
-console.log(formatNumberOrString(3.14)); // 3.140
-console.log(formatNumberOrString("hello")); // hello
+const tama: User = {
+    tag: "animal",
+    species: "Felis silvestris catus",
+};
+const uhyo: User = {
+    tag: "human",
+    name: "uhyo",
+};
+console.log(getUserName(tama)); // 名無し
+console.log(getUserName(uhyo)); // uhyo
