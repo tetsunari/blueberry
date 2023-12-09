@@ -1,14 +1,14 @@
-type SignType = "plus" | "minus";
-function signNumber(type: SignType) {
-    return type === "plus" ? 1 : -1;
-}
-function numberWithSign(number: number, type: SignType|"none") {
-    if (type === "none") {
-        return 0;
+console.log(typeof "uhyo"); // string
+console.log(typeof 42); // number
+console.log(typeof {}); // object
+console.log(typeof undefined); // undefined
+
+function formatNumberOrString(value: string|number) {
+    if (typeof value === "number") {
+        return value.toFixed(3);
     } else {
-        return number * signNumber(type);
+        return value;
     }
 }
-console.log(numberWithSign(5, "plus")); // 5
-console.log(numberWithSign(5, "minus")); // -5
-console.log(numberWithSign(5, "none")); // 0
+console.log(formatNumberOrString(3.14)); // 3.140
+console.log(formatNumberOrString("hello")); // hello
