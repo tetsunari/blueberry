@@ -1,24 +1,15 @@
+function get<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}
 type Human = {
     name: string;
     age: number;
-};
-type HumanKeys = keyof Human;
-let key: HumanKeys = "name";
-key = "age";
-// key = "hoge"; // error
-
-const mmConversionTable = {
-    mm: 1,
-    cm: 10,
-    m: 1e3,
-    km: 1e6,
-};
-function convertUnits(value: number, unit: keyof typeof mmConversionTable) {
-    const mmValue = value * mmConversionTable[unit];
-    return {
-        mm: mmValue,
-        m: mmValue / 1e3,
-        km: mmValue / 1e6,
-    };
 }
-console.log(convertUnits(30000, "cm"));
+const uhyo: Human = {
+    name: "uhyo",
+    age: 26,
+};
+const uhyoName = get(uhyo, "name");
+const uhyoAge = get(uhyo, "age");
+console.log(uhyoName); // "uhyo"
+console.log(uhyoAge); // 26
