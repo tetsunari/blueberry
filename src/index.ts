@@ -1,30 +1,41 @@
-function doNothing(val: unknown) {
-    console.log(val);
+type HasToString = {
+    toString: () => string
 }
-doNothing(3);
-doNothing({
-    user: {
-        name: "uhyo"
+function useToString1(value: HasToString) {
+    console.log(`value is ${value.toString()}`);
+}
+useToString1({
+    toString() {
+        return "foo!";
     }
 });
-doNothing(() => {
-    console.log("hi");
-})
+useToString1(3.14);
 
-function doNoting2(val: unknown) {
-    // Object is of type 'unknown'.
-    // const name = val.name;
-    // console.log(name);
+function useToString2(value: HasToString & object) {
+    console.log(`value is ${value.toString()}`);
 }
-
-function useUnknown(val: unknown) {
-    if (typeof val === "string") {
-        console.log("valは文字列です。");
-        console.log(val.slice(0, 5));
-    } else {
-        console.log("valはstring型ではありません。");
-        console.log(val);
+useToString2({
+    toString() {
+        return "foo!";
     }
+});
+// error: Argument of type 'number' is not assignable to parameter of type 'HasToString & object'.
+// useToString2(3.14);
+
+function useNever(value: never) {
+    const num: number = value;
+    const str: string = value;
+    const obj: object = value;
+    console.log(`value is ${value}`);
 }
-useUnknown("foobar");
-useUnknown(null);
+// error: Argument of type '{}' is not assignable to parameter of type 'never'.
+// useNever({});
+// error: Argument of type '3.14' is not assignable to parameter of type 'never'.
+// useNever(3.14);
+
+function thrower(): never {
+    throw new Error("oops!");
+}
+const result: never = thrower();
+const str: string = result;
+console.log(str);
