@@ -1,51 +1,26 @@
-function isStringOrNumber(value: unknown): value is string | number {
-    return typeof value === "string" || typeof value === "number";
-}
-const something: unknown = 123;
-if (isStringOrNumber(something)) {
-    console.log(something);
-    // something is string | number
-    // 123
-}
+type NumberAndStrings = [number, ...string[]];
+const arr1: NumberAndStrings = [25, "uhyo", "hyo", "hyo"];
+const arr2: NumberAndStrings = [25];
+// ここから下はエラーになる
+const arr3: NumberAndStrings = ["uhyo", "hyo"];
+const arr4: NumberAndStrings = [25, 26, 27];
+const arr5: NumberAndStrings = [];
 
-// error
-function isStringOrNumber2(value: unknown): boolean {
-    return typeof value === "string" || typeof value === "number";
-}
-const something2: unknown = 123;
-if (isStringOrNumber2(something2)) {
-    console.log(something2.toString());
-    // Object is of type 'unknown'.
-}
+type NumberStringNumber = [number, ...string[], number];
+const arr6: NumberStringNumber = [25, "uhyo", "hyo", 26];
+const arr7: NumberStringNumber = [25, 25];
+// ここから下はエラーになる
+const arr8: NumberStringNumber = [25, "uhyo", "hyo"];
+const arr9: NumberStringNumber = [];
+const arr10: NumberStringNumber = ["uhyo", "hyo", 26];
+const arr11: NumberStringNumber = [25, "uhyo", 25, "hyo"];
 
-type Human = {
-    type: "Human";
-    name: string;
-    age: number;
-};
-function isHuman(value: any): value is Human {
-    if (value === null) return false;
-    return (
-        value.type === "Human" &&
-        typeof value.name === "string" &&
-        typeof value.age === "number"
-    );
-}
+// ...配列を2回使っているのでコンパイルエラーになる
+type T1 = [number, ...string[], number, ...string[]];
+type T2 = [number, ...string[], ...number[], string];
+// オプショナルな要素を...配列型よりも後ろで指定するとコンパイルエラーになる
+type T3 = [number, ...string[], number?];
 
-function assertHuman(value: any): asserts value is Human {
-    if (value === null) {
-        throw new Error("Given value is null or undefined");
-    }
-    if (
-        value.type !== "Human" ||
-        typeof value.name !== "string" ||
-        typeof value.age !== "number"
-    ) {
-        throw new Error("Given value is not a Human");
-    }
-}
-function checkAndUseHuman(value: unknown) {
-    assertHuman(value);
-    // ここから下ではvalueはHuman型として扱われる
-    const name = value.name;
-}
+type NSN = [number, string, number];
+type SNSNS = [string, ...NSN, string];
+// [string, number, string, number, string]
