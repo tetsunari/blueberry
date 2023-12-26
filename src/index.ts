@@ -1,41 +1,51 @@
-type HasToString = {
-    toString: () => string
+function isStringOrNumber(value: unknown): value is string | number {
+    return typeof value === "string" || typeof value === "number";
 }
-function useToString1(value: HasToString) {
-    console.log(`value is ${value.toString()}`);
+const something: unknown = 123;
+if (isStringOrNumber(something)) {
+    console.log(something);
+    // something is string | number
+    // 123
 }
-useToString1({
-    toString() {
-        return "foo!";
+
+// error
+function isStringOrNumber2(value: unknown): boolean {
+    return typeof value === "string" || typeof value === "number";
+}
+const something2: unknown = 123;
+if (isStringOrNumber2(something2)) {
+    console.log(something2.toString());
+    // Object is of type 'unknown'.
+}
+
+type Human = {
+    type: "Human";
+    name: string;
+    age: number;
+};
+function isHuman(value: any): value is Human {
+    if (value === null) return false;
+    return (
+        value.type === "Human" &&
+        typeof value.name === "string" &&
+        typeof value.age === "number"
+    );
+}
+
+function assertHuman(value: any): asserts value is Human {
+    if (value === null) {
+        throw new Error("Given value is null or undefined");
     }
-});
-useToString1(3.14);
-
-function useToString2(value: HasToString & object) {
-    console.log(`value is ${value.toString()}`);
-}
-useToString2({
-    toString() {
-        return "foo!";
+    if (
+        value.type !== "Human" ||
+        typeof value.name !== "string" ||
+        typeof value.age !== "number"
+    ) {
+        throw new Error("Given value is not a Human");
     }
-});
-// error: Argument of type 'number' is not assignable to parameter of type 'HasToString & object'.
-// useToString2(3.14);
-
-function useNever(value: never) {
-    const num: number = value;
-    const str: string = value;
-    const obj: object = value;
-    console.log(`value is ${value}`);
 }
-// error: Argument of type '{}' is not assignable to parameter of type 'never'.
-// useNever({});
-// error: Argument of type '3.14' is not assignable to parameter of type 'never'.
-// useNever(3.14);
-
-function thrower(): never {
-    throw new Error("oops!");
+function checkAndUseHuman(value: unknown) {
+    assertHuman(value);
+    // ここから下ではvalueはHuman型として扱われる
+    const name = value.name;
 }
-const result: never = thrower();
-const str: string = result;
-console.log(str);
