@@ -1,33 +1,17 @@
-type Option <T> = {
-    tag: "some",
-    value: T
-} | {
-    tag: "none"
-};
+type Option<T> = { tag: "Some"; value: T } | { tag: "None" };
+function doubleOption(obj: Option<number>) {
+    return mapOption(obj, x => x * 2);
+}
+const four: Option<number> = { tag: "Some", value: 4 };
+const none: Option<number> = { tag: "None" };
+console.log(doubleOption(four)); // { tag: "Some", value: 8 }
+console.log(doubleOption(none)); // { tag: "None" }
 
-function showNumberIfExists(obj: Option<number>): void {
-    if (isSome(obj)) {
-        console.log(obj.value);
+function mapOption<T, U>(obj: Option<T>, callback: (value: T) => U): Option<U> {
+    switch (obj.tag) {
+        case "Some":
+            return { tag: "Some", value: callback(obj.value) };
+        case "None":
+            return { tag: "None" };
     }
 }
-
-function isSome<T>(obj: Option<T>): obj is { tag: "some", value: T } {
-    return obj.tag === "some";
-}
-// other way
-// function isSome<T>(obj: Option<T>): obj is Extract<Option<T>, { tag: "some" }> {
-//     return obj.tag === "some";
-// }
-
-// other way
-// type Some<T> = {
-//     tag: "some";
-//     value: T;
-// }
-// type None = {
-//     tag: "none";
-// }
-// type Option<T> = Some<T> | None;
-// function isSome<T>(obj: Option<T>): obj is Some<T> {
-//     return obj.tag === "some";
-// }
