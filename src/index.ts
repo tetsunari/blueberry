@@ -1,25 +1,21 @@
-type Human = {
-    type: "Human",
-    name: string,
-    age: number
+type Option <T> = {
+    tag: "some",
+    value: T
+} | {
+    tag: "none"
 };
-function isHuman(value: any): value is Human {
-    if (value === null) return false;
-    return (
-        value.type === "Human" &&
-        typeof value.name === "string" &&
-        typeof value.age === "number"
-    )
-}
 
-function isPropertyAccess(value: unknown): value is { [key: string]: unknown } {
-    return value != null;
+function showNumberIfExists(obj: Option<number>): void {
+    if (obj.tag === "some") {
+        console.log(obj.value);
+    }
 }
-function isHuman1(value: unknown): value is Human {
-    if (!isPropertyAccess(value)) return false;
-    return (
-        value.type === "Human" &&
-        typeof value.name === "string" &&
-        typeof value.age === "number"
-    )
+const four: Option<number> = {
+    tag: "some",
+    value: 4
 };
+const nothing: Option<number> = {
+    tag: "none"
+};
+showNumberIfExists(four); // 4
+showNumberIfExists(nothing); // nothing
