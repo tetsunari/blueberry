@@ -1,14 +1,9 @@
-export type Animal = {
+type Animal = {
     species: string;
     age: number;
 };
-
-type Animal2 = {
-    species: string;
-    age: number;
-};
-const tama: Animal2 = {
+const tama: Animal = {
     species: 'Felis silvestris catus',
     age: 3,
 };
-export { Animal2, tama };
+export type { Animal, tama };

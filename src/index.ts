@@ -1,8 +1,9 @@
 import { Animal, tama } from "./animal.js";
 
-const dog: Animal = {
-    species: 'Canis lupus familiaris',
-    age: 5,
+// 'tama' cannot be used as a value because it was exported using 'export type'.
+// const Cat: Animal = tama;
+
+const myCat: typeof tama = {
+    species: 'nora',
+    age: 3,
 };
-console.log(dog, tama);
-// { species: 'Canis lupus familiaris', age: 5 } { species: 'Felis silvestris catus', age: 3 }
