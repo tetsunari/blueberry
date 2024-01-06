@@ -1,8 +1,8 @@
-import fastify from "fastify";
+import express from "express";
 
-const app = fastify();
+const app = express();
 
-app.get('/', (req, reply) => {
-    reply.send("Hello, world!");
+app.get('/', (req, res) => {
+    res.send('Hello World');
 });
 app.listen(8080);
