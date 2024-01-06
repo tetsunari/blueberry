@@ -1,3 +1,4 @@
-import { Animal, tama } from "./animal.js";
+import * as uhyo from "./uhyo.js";
 
-const myCat2: Animal = { ...tama };
+console.log(uhyo.name); // "uhyo"
+console.log(uhyo.age); // 26
