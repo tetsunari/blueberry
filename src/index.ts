@@ -1,11 +1,8 @@
-import { createInterface } from 'readline';
+import fastify from "fastify";
 
-const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout
+const app = fastify();
+
+app.get('/', (req, reply) => {
+    reply.send("Hello, world!");
 });
-
-rl.question('文字列を入力してください：', (line) => {
-    console.log(`${line}が入力されました。`);
-    rl.close();
-})
+app.listen(8080);
