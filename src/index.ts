@@ -1,4 +1,5 @@
-import * as uhyo from "./uhyo.js";
-
-console.log(uhyo.name); // "uhyo"
-console.log(uhyo.age); // 26
+import type { Human } from './human.js';
+export const uhyo: Human = {
+    name: 'uhyo',
+    age: 26,
+};
