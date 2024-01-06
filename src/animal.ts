@@ -6,4 +6,5 @@ const tama: Animal = {
     species: 'Felis silvestris catus',
     age: 3,
 };
-export type { Animal, tama };
+
+export { Animal, tama };
