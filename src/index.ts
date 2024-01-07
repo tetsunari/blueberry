@@ -1,8 +1,15 @@
-import express from "express";
+import { readFileSync } from "fs";
 
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
-app.listen(8080);
+const data = readFileSync("uhyo.txt", { encoding: "utf8"});
+let count = 0;
+let currentIndex = 0;
+while (true) {
+    const nextIndex = data.indexOf("uhyo", currentIndex);
+    if (nextIndex >= 0) {
+        count++;
+        currentIndex = nextIndex + 1;
+    } else {
+        break;
+    }
+}
+console.log(`uhyo.txtが${count}回見つかりました。`);
