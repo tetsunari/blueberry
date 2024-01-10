@@ -1,12 +1,29 @@
-import { readFile } from "fs/promises";
-
-const p = readFile("foo.txt", "utf8");
-p.then((result) => {
-    console.log("成功", result);
+const p = new Promise<number>((resolve) => {
+    setTimeout(() => {
+        resolve(100);
+    }, 3000);
 });
-p.catch((error: unknown) => {
-    console.log("失敗", error);
+p.then((num) => {
+    console.log(`結果は${num}です`);
+});
+// 結果は100です
+
+const sleep = (duration: number) => {
+    return new Promise<void>((resolve) => {
+        setTimeout(resolve, duration);
+    })
+};
+sleep(3000).then(() => {
+    console.log('3秒経過');
 })
-p.finally(() => {
-    console.log("完了");
-})
+// 3秒経過
+
+const sleepReject = (duration: number) => {
+    return new Promise<never>((resolve, reject) => {
+        setTimeout(reject, duration);
+    })
+}
+sleepReject(3000).catch(() => {
+    console.log('失敗!!!');
+});
+// 失敗!!!
