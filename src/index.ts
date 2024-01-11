@@ -1,35 +1,25 @@
 import { readFile } from "fs/promises";
 
-const pFoo = readFile("foo.txt", "utf8");
-const pBar = readFile("bar.txt", "utf8");
-const pBaz = readFile("baz.txt", "utf8");
-const p = Promise.all([pFoo, pBar, pBaz]);
-p.then((results) => {
-    console.log("foo.txt:", results[0]);
-    console.log("bar.txt:", results[1]);
-    console.log("bax.txt:", results[2]);
-});
-
-// 上と同じ
-const p2 = Promise.all([
+const p = Promise.race([
     readFile("foo.txt", "utf8"),
     readFile("bar.txt", "utf8"),
     readFile("baz.txt", "utf8"),
 ]);
-p2.then((results) => {
-    const [foo, bar, baz] = results;
-    console.log("foo.txt:", foo);
-    console.log("bar.txt:", bar);
-    console.log("baz.txt:", baz);
+p.then((result) => {
+    console.log(result);
 });
-// 上と同じ
-p2.then(([foo, bar, baz]) => {
-    console.log("foo.txt:", foo);
-    console.log("bar.txt:", bar);
-    console.log("baz.txt:", baz);
-});
-/**
- * foo.txt: aiueo
- * bar.txt: bar
- * bax.txt: baz
- */
+
+const sleepReject = (duration: number) => {
+    return new Promise<never>((resolve, reject) => {
+        setTimeout(reject, duration);
+    })
+};
+const p2 = Promise.race([
+    readFile("foo.txt", "utf8"),
+    sleepReject(1000),
+]);
+p2.then((result) => {
+    console.log("success", result);
+}, (error: unknown) => {
+    console.log("error", error);
+})
