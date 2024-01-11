@@ -1,29 +1,16 @@
-const p = new Promise<number>((resolve) => {
-    setTimeout(() => {
-        resolve(100);
-    }, 3000);
+const p = Promise.resolve(100);
+p.then((result) => {
+    console.log(`result is ${result}`);
 });
-p.then((num) => {
-    console.log(`結果は${num}です`);
-});
-// 結果は100です
+// Promise.resolve(100) は、以下と同じ意味
+new Promise((resolve) => { resolve(100); })
 
-const sleep = (duration: number) => {
-    return new Promise<void>((resolve) => {
-        setTimeout(resolve, duration);
-    })
-};
-sleep(3000).then(() => {
-    console.log('3秒経過');
+// Promise.reject("foo") は、以下と同じ意味
+new Promise((resolve, reject) => { reject("foo"); })
+
+const p1 = Promise.resolve(100);
+p.then(() => {
+    console.log("2");
 })
-// 3秒経過
-
-const sleepReject = (duration: number) => {
-    return new Promise<never>((resolve, reject) => {
-        setTimeout(reject, duration);
-    })
-}
-sleepReject(3000).catch(() => {
-    console.log('失敗!!!');
-});
-// 失敗!!!
+console.log("1");
+// 1 2
