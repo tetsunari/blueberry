@@ -1,25 +1,60 @@
 import { readFile } from "fs/promises";
 
-const repeat10 = (str: string) =>
-    new Promise<string>((resolve) => {
-        setTimeout(
-            () => resolve(str.repeat(10)),
-            1000
-        );
+const p1 = readFile("foo.txt", "utf8");
+const p2 = p1.then((result) => {
+    throw new Error("Error!!!");
+});
+p2.then((result) => {
+    console.log(result);
+});
+
+// error handling
+const sleepReject = (duration: number) => {
+    return new Promise<never>((resolve, reject) => {
+        setTimeout(reject, duration
+    })
+};
+const p = readFile("foo.txt", "utf8");
+    .then(() => sleepReject(1000))
+    .then((result) => {
+        console.log(result);
+    }, () => {
+        console.log("Error!");
     });
 
-readFile("foo.txt", "utf8")
-    .then((result) => repeat10(result))
+// error handling
+const p3 = readFile("foo.txt", "utf8");
+    .then(() => sleepReject(1000))
     .then((result) => {
         console.log(result);
     })
+    .catch((error) => {
+        console.log("Error!", error);
+    })
 
-// 上と同じ
-const p1 = readFile("foo.txt", "utf8");
-const p3 = p1.then((result) => {
-    const p2 = repeat10(result);
-    return p2;
+// error handling
+const p4 = readFile("foo.txt", "utf8");
+p4.then((result) => {
+    console.log("Success!", result);
 });
-p3.then((result) => {
-    console.log(result);
+p4.catch((error) => {
+    console.log("Error!", error);
+});
+
+// error handling
+const p5 = readFile("foo.txt", "utf8");
+const p6 = p5.then((result) => {
+    console.log("Success!", result);
+});
+const p7 = p5.catch((error) => {
+    console.log("Error!", error);
+});
+
+// correct error handling
+const p8 = readFile("foo.txt", "utf8");
+const p9 = p8.then((result) => {
+    console.log("Success!", result);
+});
+const p10 = p9.catch((error) => {
+    console.log("Error!", error);
 });
