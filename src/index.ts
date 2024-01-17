@@ -1,16 +1,7 @@
-async function get3(): Promise<number> {
-    console.log('get3() called');
-    return 3;
+async function fail() {
+    throw new Error("oh my god!");
 }
-console.log('before get3()');
-const p = get3();
-p.then(num => {
-    console.log(`num is ${num}`);
+const p = fail();
+p.catch(err => {
+    console.log(err);
 });
-console.log('after get3()');
-/**
- * before get3()
- * get3() called
- * after get3()
- * num is 3
- */
