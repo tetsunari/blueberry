@@ -1,7 +1,13 @@
-async function fail() {
-    throw new Error("oh my god!");
+const sleep = (duration: number) => {
+    return new Promise<void>((resolve) => {
+        setTimeout(resolve, duration);
+    });
+};
+async function get3() {
+    await sleep(1000);
+    return 3;
 }
-const p = fail();
-p.catch(err => {
-    console.log(err);
+const p = get3();
+p.then(num => {
+    console.log(`num is ${num}`);
 });
