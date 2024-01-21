@@ -18,3 +18,4 @@ while(true) {
         break;
     }
 }
+console.log(currentIndex);
