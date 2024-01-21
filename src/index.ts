@@ -1,23 +1,20 @@
-import { readFile, writeFile } from "fs/promises";
-const main = async function() {
-    const fooContent = await readFile("foo.txt", "utf8");
-    await writeFile("bar.txt", fooContent + fooContent);
-    console.log("success!");
-};
-console.log(main());
-// 上と同じ
-const main2 = async () => {
-    const fooContent = await readFile("foo.txt", "utf8");
-    await writeFile("bar.txt", fooContent + fooContent);
-    console.log("success!");
-};
-console.log(main2());
+import { readFile } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const obj = {
-    normalMethod() {
+const filePath = fileURLToPath(import.meta.url);
+const fileDir = path.dirname(filePath);
+const dataFile = path.join(fileDir, "../uhyo.txt");
+const data = await readFile(dataFile, { encoding: "utf8" });
 
-    },
-    async asyncMethod() {
-
-    },
-};
+let count = 0;
+let currentIndex = 0;
+while(true) {
+    const nextIndex = data.indexOf("uhyo", currentIndex);
+    if (nextIndex >= 0) {
+        count++;
+        currentIndex = nextIndex + 1;
+    } else {
+        break;
+    }
+}
