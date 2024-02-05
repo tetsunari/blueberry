@@ -1,12 +1,8 @@
 'use strict';
 
 {
-  let taxRate: 0.1;
-  let myEmail: 'taro@example.com';
-  let isPaid: true;
-  myEmail = 'jiro@example.com';
+  type ResultStatus = 'Pass' | 'Fail';
 
-  let result: 'Pass' | 'Fail';
-  result = 'Good';
-  result = 50;
+  let englishResult: ResultStatus;
+  let mathResult: ResultStatus;
 }
