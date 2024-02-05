@@ -1,9 +1,24 @@
 'use strict';
 
 {
-  const values: readonly [string, number] = ['Taro', 70];
-  values[0] = 'Jiro';
-  values[1] = 90;
-  values[0] = 70;
-  values[1] = 'Saburo';
+  // type User = {
+  //   userName: string;
+  //   score: number;
+  // };
+
+  interface User {
+    userName: string;
+    score: number;
+  }
+
+  // const user: {userName: string; score: number} = {
+  const user: User = {
+    userName: 'Taro',
+    score: 80,
+  };
+
+  user.userName = 'Jiro';
+  user.score = 90;
+  user.userName = true;
+  user.email = 'taro@example.com';
 }
