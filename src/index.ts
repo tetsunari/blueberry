@@ -1,24 +1,17 @@
 'use strict';
 
 {
-  // type User = {
-  //   userName: string;
-  //   score: number;
-  // };
-
   interface User {
-    userName: string;
+    readonly userName: string;
     score: number;
+    email?: string;
   }
 
-  // const user: {userName: string; score: number} = {
   const user: User = {
     userName: 'Taro',
     score: 80,
   };
 
+  console.log(user.userName);
   user.userName = 'Jiro';
-  user.score = 90;
-  user.userName = true;
-  user.email = 'taro@example.com';
 }
