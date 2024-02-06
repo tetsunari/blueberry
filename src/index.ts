@@ -1,11 +1,8 @@
 'use strict';
 
 {
-  function double(num: number): number {
-    // return num * 2;
+  function printUserName(userName: string): void {
+    console.log(userName);
     return 'OK';
   }
-
-  console.log(double(10));
-  console.log(double('Hello'));
 }
