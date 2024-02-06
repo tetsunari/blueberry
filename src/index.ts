@@ -1,17 +1,21 @@
 'use strict';
 
 {
-  // const double = (num: number): number => {
-  //   // return num * 2;
-  //   return 'OK';
-  // };
+  function printNumberTwice(num: number): void {
+    console.log(num);
+    console.log(num);
+  }
 
-  let double: (num: number) => number;
-  double = (num: number): number => {
-    // return num * 2;
-    return 'OK';
-  };
+  function printStringTwice(str: string): void {
+    console.log(str);
+    console.log(str);
+  }
 
-  console.log(double(10));
-  console.log(double('OK'));
+  function printTwice<T>(value: T): void {
+    console.log(value);
+    console.log(value);
+  }
+
+  printTwice<number>(10);
+  printTwice<string>('OK');
 }
