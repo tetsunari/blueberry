@@ -1,17 +1,11 @@
 'use strict';
 
 {
-  interface User {
-    readonly userName: string;
-    score: number;
-    email?: string;
+  function double(num: number): number {
+    // return num * 2;
+    return 'OK';
   }
 
-  const user: User = {
-    userName: 'Taro',
-    score: 80,
-  };
-
-  console.log(user.userName);
-  user.userName = 'Jiro';
+  console.log(double(10));
+  console.log(double('Hello'));
 }
